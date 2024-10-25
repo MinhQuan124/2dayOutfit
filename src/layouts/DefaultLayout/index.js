@@ -5,10 +5,10 @@ import Footer from "./Footer";
 
 function DefaultLayout({ children }) {
   return (
-    <div>
+    <div className="container relative max-w-screen-2xl text-base bg-slate-300 h-screen">
       <Header />
 
-      <div className="container">{children}</div>
+      <div className="content h-lvh">{children}</div>
 
       <Footer />
     </div>
