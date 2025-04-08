@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ct = custom */
+.ct-header-top-item {
+  @apply block p-2 cursor-pointer text-white font-semibold hover:text-slate-500;
+}
+
+.ct-navigation-menu-item {
+  @apply cursor-pointer py-1 relative hover:text-gray-600 after:content-[''] after:absolute after:bottom-0 after:left-0 
+  after:bg-slate-900 after:h-0.5 after:w-0 after:transition-all after:ease-in-out after:duration-300 hover:after:w-full;
+}
+
+.ct-user-item {
+  @apply flex items-center w-full max-h-10 py-2 pr-8 pl-8;
+}
+
+.ct-navigation-menu-item-mobile {
+  @apply w-full min-h-11 py-2 flex items-center justify-between pl-9 pr-6 text-2xl font-medium text-textColor hover:text-slate-500;
+}
+
+.ct-icon {
+  @apply hover:bg-slate-200 rounded-full flex items-center justify-center w-full h-full p-2;
+}
+.ct-icon:last-child {
+  @apply p-2 hover:bg-slate-200 rounded-full;
+}
+
+/* Custom popper wrapper */
+.ct-popper {
+  @apply w-full min-h-32 rounded-lg bg-white shadow-lg py-3 pl-4;
+}
+
+/* Footer */
+.ct-footer-links {
+  @apply p-1 pl-0 max-sm:mb-2 mb-4 cursor-pointer hover:text-gray-200;
+}
