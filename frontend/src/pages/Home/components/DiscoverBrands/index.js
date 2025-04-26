@@ -22,14 +22,14 @@ const brands = [
 function DiscoverBrands() {
   return (
     <FadeInEffect>
-      <div className="w-full mt-24 mb-16">
+      <div className="w-full mt-24">
         <h1 className="text-2xl text-center font-extrabold uppercase">
           Discover Brands
         </h1>
         <div className=" mt-5 flex justify-center gap-1 flex-wrap">
           {brands.map((brand, index) => (
-            <Link>
-              <div key={index} className="relative overflow-hidden">
+            <Link key={index}>
+              <div className="relative overflow-hidden">
                 <img
                   src={brand.image}
                   alt={brand.alt}
@@ -43,6 +43,26 @@ function DiscoverBrands() {
               </div>
             </Link>
           ))}
+        </div>
+
+        <div className="flex justify-center align-middle w-full">
+          <Link className="flex max-w-[50%] my-5 text-2xl text-center font-extrabold">
+            <p className="pr-1">View more </p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="size-8"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+              />
+            </svg>
+          </Link>
         </div>
       </div>
     </FadeInEffect>

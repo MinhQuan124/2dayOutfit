@@ -1,8 +1,6 @@
-const flowbite = require("flowbite-react/tailwind");
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [flowbite.content(), "./src/**/*.{js,jsx,ts,tsx}"],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       screens: {
@@ -42,5 +40,5 @@ module.exports = {
       },
     },
   },
-  plugins: [flowbite.plugin()],
+  plugins: [require("@tailwindcss/line-clamp")],
 };

@@ -5,7 +5,7 @@ import ActionMenu from "./components/MenuAction";
 
 function Header() {
   return (
-    <div className="w-full max-w-screen-2xl sticky top-0 z-40 flex-none mx-auto">
+    <div className="w-full max-w-screen-2xl sticky top-0 z-40 flex-none mx-auto shadow-md">
       <div className="bg-black px-2">
         <TopBar />
       </div>

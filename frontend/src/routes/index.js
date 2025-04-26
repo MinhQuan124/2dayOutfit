@@ -1,8 +1,8 @@
 import Home from "../pages/Home";
 import Trending from "../pages/Trending";
-import Clothing from "../pages/Clothing";
-import Shoes from "../pages/Shoes";
-import Accessories from "../pages/Accessories";
+import Mens from "../pages/Mens";
+import OurStory from "../pages/OurStory";
+import SpecialOffers from "../pages/SpecialOffers";
 import Sales from "../pages/Sales";
 import Search from "../pages/Search";
 import Account from "../pages/Account";
@@ -14,9 +14,9 @@ import SignUp from "../pages/Auth/SignUp";
 const publicRoutes = [
   { path: "/", component: Home },
   { path: "/trending", component: Trending },
-  { path: "/clothing", component: Clothing },
-  { path: "/shoes", component: Shoes },
-  { path: "/accessories", component: Accessories },
+  { path: "/mens", component: Mens },
+  { path: "/our-story", component: OurStory },
+  { path: "/special-offers", component: SpecialOffers },
   { path: "/sales", component: Sales },
   { path: "/search", component: Search },
   { path: "/account", component: Account },

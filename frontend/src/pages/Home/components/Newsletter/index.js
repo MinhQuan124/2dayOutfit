@@ -27,7 +27,7 @@ function Newsletter() {
       </p>
       <form>
         <input
-          className="rounded-full"
+          className="rounded-full border py-1 px-3 text-base"
           type="email"
           placeholder="Enter your email address"
         />

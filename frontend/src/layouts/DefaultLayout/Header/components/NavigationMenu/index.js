@@ -10,20 +10,20 @@ function NavigationMenu() {
       </li>
 
       <li className="ct-navigation-menu-item">
-        <Link className="block p-1 pb-0" to="/clothing">
-          Clothing
+        <Link className="block p-1 pb-0" to="/mens">
+          Mens
         </Link>
       </li>
 
       <li className="ct-navigation-menu-item">
-        <Link className="block p-1 pb-0" to="/shoes">
-          Shoes
+        <Link className="block p-1 pb-0" to="/our-story">
+          Our Story
         </Link>
       </li>
 
       <li className="ct-navigation-menu-item">
-        <Link className="block p-1 pb-0" to="/accessories">
-          Accessories
+        <Link className="block p-1 pb-0" to="/special-offer">
+          Special Offers
         </Link>
       </li>
 

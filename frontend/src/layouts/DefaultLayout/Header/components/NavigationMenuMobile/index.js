@@ -34,17 +34,17 @@ function NavigationMenuMobile({ toggleMenu, animate }) {
           </button>
 
           <button className="ct-navigation-menu-item-mobile">
-            <Link to="/clothing">Clothing</Link>
+            <Link to="/mens">Mens</Link>
             <ChevronRightIcon />
           </button>
 
           <button className="ct-navigation-menu-item-mobile">
-            <Link to="/shoes">Shoes</Link>
+            <Link to="/our-story">Our Story</Link>
             <ChevronRightIcon />
           </button>
 
           <button className="ct-navigation-menu-item-mobile">
-            <Link to="/accessories">Accessories</Link>
+            <Link to="/special-offer">Special Offers</Link>
             <ChevronRightIcon />
           </button>
 
