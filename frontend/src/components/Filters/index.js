@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 
-function Filters({ data }) {
+function Filters({ data, onFilterChange }) {
   const [filters, setFilters] = useState([]);
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [selectedFilters, setSelectedFilters] = useState({}); //filter selections
 
   useEffect(() => {
     if (data && data.length > 0) {
@@ -44,8 +45,24 @@ function Filters({ data }) {
     setOpenDropdown(openDropdown === index ? null : index);
   };
 
+  const handleCheckboxChange = (label, option) => {
+    const currentSelection = selectedFilters[label] || [];
+
+    const newSelection = currentSelection.includes(option)
+      ? currentSelection.filter((item) => item !== option)
+      : [...currentSelection, option];
+
+    const updatedFilter = {
+      ...selectedFilters,
+      [label]: newSelection,
+    };
+
+    setSelectedFilters(updatedFilter);
+    onFilterChange(updatedFilter);
+  };
+
   return (
-    <div className="flex flex-col fixed px-12 bg-white w-full min-h-fit z-30">
+    <div className="flex flex-col fixed px-4 md:px-12 bg-white w-full min-h-fit z-30">
       {/* Sort part */}
       <div className="pt-5">
         <label
@@ -70,12 +87,12 @@ function Filters({ data }) {
         <label className="text-sm font-semibold text-gray-600 mb-2 block">
           Filter
         </label>
-        <div className="flex items-center w-fit border border-gray-300 bg-white overflow-visible">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-fit bg-white overflow-visible p-2 pl-0">
           {filters.map((filter, index) => (
-            <div key={index} className="relative">
+            <div key={index} className="relative w-full min-w-[140px]">
               <button
                 onClick={() => toggleDropdown(index)}
-                className="flex items-center justify-between gap-2 px-4 py-2 min-w-[160px] border-r border-gray-300 text-base font-semibold text-gray-800 hover:bg-gray-50 cursor-pointer whitespace-nowrap"
+                className="flex w-full items-center justify-between gap-2 px-4 py-2 border border-gray-300 text-base font-semibold text-gray-800 cursor-pointer whitespace-nowrap"
               >
                 {filter.label}
                 <svg
@@ -102,13 +119,22 @@ function Filters({ data }) {
                         key={i}
                         className="flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer"
                       >
-                        <input
-                          type="checkbox"
-                          className="h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500 mr-2"
-                        />
-                        <span className="text-sm text-gray-700 truncate">
-                          {option}
-                        </span>
+                        <label className="flex w-full items-center cursor-pointer py-1">
+                          <input
+                            type="checkbox"
+                            checked={
+                              selectedFilters[filter.label]?.includes(option) ||
+                              false
+                            }
+                            onChange={() =>
+                              handleCheckboxChange(filter.label, option)
+                            }
+                            className="h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500 mr-2"
+                          />
+                          <span className="text-sm text-gray-700 first-letter:uppercase line-clamp-1">
+                            {option}
+                          </span>
+                        </label>
                       </li>
                     ))}
                   </ul>

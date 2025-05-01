@@ -10,11 +10,15 @@ import Cart from "../pages/Cart";
 import SignIn from "../pages/Auth/SignIn";
 import SignUp from "../pages/Auth/SignUp";
 
+import ProductDetail from "../pages/ProductDetail";
+
 //Public routes
 const publicRoutes = [
   { path: "/", component: Home },
   { path: "/trending", component: Trending },
-  { path: "/mens", component: Mens },
+  { path: "/products/all-clothing", component: Mens },
+  { path: "/products/category/:category", component: Mens },
+  { path: "/products/:slug", component: ProductDetail },
   { path: "/our-story", component: OurStory },
   { path: "/special-offers", component: SpecialOffers },
   { path: "/sales", component: Sales },

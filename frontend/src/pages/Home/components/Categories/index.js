@@ -5,49 +5,49 @@ const categories = [
     name: "SUITS",
     image:
       "https://res.cloudinary.com/draqaiefe/image/upload/v1744113076/suit_ljnmf8.jpg",
-    link: "suits",
+    link: "/products/category/suit",
   },
   {
     name: "JACKETS",
     image:
       "https://res.cloudinary.com/draqaiefe/image/upload/v1744113073/jacket_koedbe.jpg",
-    link: "jackets",
+    link: "/products/category/jacket",
   },
   {
     name: "SHIRTS",
     image:
       "https://res.cloudinary.com/draqaiefe/image/upload/v1744113074/shirt_gb6mwb.webp",
-    link: "shirts",
+    link: "/products/category/shirt",
   },
   {
     name: "PANTS",
     image:
       "https://res.cloudinary.com/draqaiefe/image/upload/v1744113074/pants_a3ivzd.jpg",
-    link: "pants",
+    link: "/products/category/pants",
   },
   {
     name: "SHORTS",
     image:
       "https://res.cloudinary.com/draqaiefe/image/upload/v1744113076/short_crwix6.webp",
-    link: "shorts",
+    link: "/products/category/shorts",
   },
   {
     name: "HOODIES",
     image:
       "https://res.cloudinary.com/draqaiefe/image/upload/v1744113073/hoodies_qh7vd2.jpg",
-    link: "hoodies",
+    link: "/products/category/hoodie",
   },
   {
     name: "FOOTWEAR",
     image:
       "https://res.cloudinary.com/draqaiefe/image/upload/v1744113073/footwear_ztacec.webp",
-    link: "footwear",
+    link: "/products/category/footwear",
   },
   {
     name: "ACCESSORIES",
     image:
       "https://res.cloudinary.com/draqaiefe/image/upload/v1744113073/accessories_l971yv.jpg",
-    link: "accessories",
+    link: "/products/category/accessories",
   },
 ];
 
