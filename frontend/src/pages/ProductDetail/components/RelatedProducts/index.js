@@ -9,7 +9,7 @@ function RelatedProducts({ products }) {
   const scrollRef = useRef(null);
 
   if (!products || products.length === 0)
-    return <p className="text-sm font-semibold">No Available Products</p>;
+    return <p className="text-sm">No Availabled Products</p>;
 
   const scrollLeft = () => {
     scrollRef.current?.scrollBy({ left: -300, behavior: "smooth" });
@@ -21,8 +21,6 @@ function RelatedProducts({ products }) {
 
   return (
     <div className="relative py-6">
-      <h3 className="text-sm font-semibold mb-4">You May Also Like</h3>
-
       {/* Navigation buttons */}
       <button
         onClick={scrollLeft}

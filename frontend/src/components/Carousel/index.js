@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 
-import {
-  LeftArrowCircle,
-  RightArrowCircle,
-} from "../../../../components/Icons";
+import { LeftArrowCircle, RightArrowCircle } from "../Icons";
 import { Link } from "react-router-dom";
 
 function Carousel({ slides }) {

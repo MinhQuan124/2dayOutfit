@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react";
 
-function Filters({ data, onFilterChange }) {
+function Filters({ data, onFilterChange, onSortChange }) {
   const [filters, setFilters] = useState([]);
   const [openDropdown, setOpenDropdown] = useState(null);
-  const [selectedFilters, setSelectedFilters] = useState({}); //filter selections
+  const [selectedFilters, setSelectedFilters] = useState({
+    Category: [],
+    Size: [],
+    Brand: [],
+    Color: [],
+  });
 
   useEffect(() => {
     if (data && data.length > 0) {
-      //...new Set(): lay ra cac gia tri khong trung lap
-      //flatMap(): de xu ly du lieu long nhau
-
       const categories = [...new Set(data.map((item) => item.category))];
-
       const brands = [...new Set(data.map((item) => item.brand))];
 
       const sizes = [
@@ -46,24 +47,23 @@ function Filters({ data, onFilterChange }) {
   };
 
   const handleCheckboxChange = (label, option) => {
-    const currentSelection = selectedFilters[label] || [];
+    const current = selectedFilters[label] || [];
 
-    const newSelection = currentSelection.includes(option)
-      ? currentSelection.filter((item) => item !== option)
-      : [...currentSelection, option];
+    const newSelected = current.includes(option)
+      ? current.filter((item) => item !== option)
+      : [...current, option];
 
-    const updatedFilter = {
+    const updated = {
       ...selectedFilters,
-      [label]: newSelection,
+      [label]: newSelected,
     };
 
-    setSelectedFilters(updatedFilter);
-    onFilterChange(updatedFilter);
+    setSelectedFilters(updated);
+    onFilterChange(updated);
   };
 
   return (
     <div className="flex flex-col fixed px-4 md:px-12 bg-white w-full min-h-fit z-30">
-      {/* Sort part */}
       <div className="pt-5">
         <label
           htmlFor="sort"
@@ -73,16 +73,16 @@ function Filters({ data, onFilterChange }) {
         </label>
         <select
           id="sort"
+          onChange={onSortChange}
           className="border border-black px-4 py-2 w-52 rounded-full cursor-pointer text-sm focus:outline-none"
         >
           <option>Default</option>
-          <option>Most Popular</option>
+          <option>New In</option>
           <option>Price: Low - High</option>
           <option>Price: High - Low</option>
         </select>
       </div>
 
-      {/* Filter part */}
       <div className="pb-5 mt-2">
         <label className="text-sm font-semibold text-gray-600 mb-2 block">
           Filter
@@ -110,7 +110,6 @@ function Filters({ data, onFilterChange }) {
                 </svg>
               </button>
 
-              {/* Dropdown menu */}
               {openDropdown === index && (
                 <div className="absolute left-0 mt-1 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-50 max-h-56 overflow-y-auto">
                   <ul className="py-1">
@@ -122,10 +121,9 @@ function Filters({ data, onFilterChange }) {
                         <label className="flex w-full items-center cursor-pointer py-1">
                           <input
                             type="checkbox"
-                            checked={
-                              selectedFilters[filter.label]?.includes(option) ||
-                              false
-                            }
+                            checked={selectedFilters[filter.label]?.includes(
+                              option
+                            )}
                             onChange={() =>
                               handleCheckboxChange(filter.label, option)
                             }

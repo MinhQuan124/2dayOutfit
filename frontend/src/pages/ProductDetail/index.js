@@ -170,6 +170,8 @@ function ProductDetail() {
 
           {/* Suggestion related product */}
           <div className="w-full">
+            <h3 className="text-sm font-semibold mb-4">You May Also Like</h3>
+
             <RelatedProducts products={relatedProducts} />
           </div>
 

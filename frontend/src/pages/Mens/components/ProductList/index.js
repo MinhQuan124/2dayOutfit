@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import ProductItem from "../ProductItem";
+import ProductItem from "./components/ProductItem";
 import ScrollToTopButton from "../../../../components/ScrollToTopButton";
 
 function ProductList({ data }) {

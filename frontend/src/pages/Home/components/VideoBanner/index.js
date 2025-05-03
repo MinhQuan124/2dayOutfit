@@ -21,7 +21,7 @@ const VideoBanner = () => {
       <div className="absolute inset-0 bg-black/30 flex flex-col justify-end pl-4 ct-lg:pl-10 text-white">
         <h1 className="text-3xl ct-lg:text-6xl font-bold">NEW SEASON</h1>
         <Link
-          to="/trending"
+          to="/products/all-clothing"
           className="mt-4 mb-8 max-w-fit inline-block px-6 py-3 bg-white text-black text-sm ct-lg:text-lg font-semibold rounded-full"
         >
           SHOP NOW
