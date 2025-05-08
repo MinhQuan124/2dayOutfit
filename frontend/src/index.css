@@ -21,7 +21,7 @@
 }
 
 .ct-navigation-menu-item-mobile {
-  @apply w-full min-h-11 py-2 flex items-center justify-between pl-9 pr-6 text-2xl font-medium text-textColor hover:text-slate-500;
+  @apply w-full min-h-11 py-2 flex items-center justify-between pl-9 pr-6 text-2xl font-semibold text-textColor hover:text-slate-500;
 }
 
 .ct-icon {

@@ -4,7 +4,7 @@ import { Wrapper as PopperWrapper } from "../../Popper/index";
 import MenuPopperItem from "./MenuPopperItem";
 import HeaderMenu from "./HeaderMenu";
 
-function MenuPopper({ children, items = [] }) {
+function MenuPopper({ title, children, items = [] }) {
   const renderItems = () => {
     return items.map((item, index) => (
       <MenuPopperItem key={index} data={item} />
@@ -20,7 +20,7 @@ function MenuPopper({ children, items = [] }) {
         <div className="min-w-60" tabIndex="-1" {...attrs}>
           <PopperWrapper>
             <div className="ml-3">
-              <HeaderMenu title="Help" />
+              <HeaderMenu title={title} />
               {renderItems()}
             </div>
           </PopperWrapper>

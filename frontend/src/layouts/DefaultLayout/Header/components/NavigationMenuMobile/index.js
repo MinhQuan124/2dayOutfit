@@ -5,10 +5,14 @@ import {
   ChevronRightIcon,
   HelpIcon,
   StoreIcon,
+  UserIcon,
   XMarkIcon,
 } from "../../../../../components/Icons";
+import { useAuth } from "../../../../../context/AuthContext";
 
 function NavigationMenuMobile({ toggleMenu, animate }) {
+  const { user } = useAuth();
+
   return (
     <div
       className={`fixed overflow-x-hidden top-0 h-screen w-80 right-0 z-50 ${
@@ -26,13 +30,18 @@ function NavigationMenuMobile({ toggleMenu, animate }) {
           </button>
         </div>
 
-        {/* Navigation menu */}
-        <div className="py-6">
+        {user ? (
           <button className="ct-navigation-menu-item-mobile">
-            <Link to="/trending">Trending</Link>
+            <UserIcon size={36} />
+            <span className="text-lg">Hi, {user.name}</span>
             <ChevronRightIcon />
           </button>
+        ) : (
+          <></>
+        )}
 
+        {/* Navigation menu */}
+        <div className="py-6">
           <button className="ct-navigation-menu-item-mobile">
             <Link to="/mens">Mens</Link>
             <ChevronRightIcon />
@@ -40,17 +49,14 @@ function NavigationMenuMobile({ toggleMenu, animate }) {
 
           <button className="ct-navigation-menu-item-mobile">
             <Link to="/our-story">Our Story</Link>
-            <ChevronRightIcon />
           </button>
 
           <button className="ct-navigation-menu-item-mobile">
             <Link to="/special-offer">Special Offers</Link>
-            <ChevronRightIcon />
           </button>
 
           <button className="ct-navigation-menu-item-mobile">
             <Link to="/sales">Sales</Link>
-            <ChevronRightIcon />
           </button>
         </div>
 

@@ -6,8 +6,13 @@ import Sales from "../pages/Sales";
 import SearchPage from "../pages/SearchPage";
 import Account from "../pages/Account";
 import Cart from "../pages/Cart";
-import SignIn from "../pages/Auth/SignIn";
-import SignUp from "../pages/Auth/SignUp";
+import Login from "../pages/Auth/Login";
+import Register from "../pages/Auth/Register";
+
+import VerifyEmail from "../pages/VerifyEmail";
+import VerifyEmailNotice from "../pages/VerifyEmailNotice";
+import VerifySuccess from "../pages/VerifySuccess";
+import VerifyError from "../pages/VerifyError";
 
 import ProductDetail from "../pages/ProductDetail";
 
@@ -23,8 +28,20 @@ const publicRoutes = [
   { path: "/search", component: SearchPage },
   { path: "/account", component: Account },
   { path: "/cart", component: Cart },
-  { path: "/auth/signin", component: SignIn, layout: null },
-  { path: "/auth/signup", component: SignUp, layout: null },
+  { path: "/auth/login", component: Login, layout: null },
+  { path: "/auth/register", component: Register, layout: null },
+  {
+    path: "/auth/verify-email",
+    component: VerifyEmail,
+    layout: null,
+  },
+  {
+    path: "/auth/verify-email-notice",
+    component: VerifyEmailNotice,
+    layout: null,
+  },
+  { path: "/auth/verify-success", component: VerifySuccess, layout: null },
+  { path: "/auth/verify-error", component: VerifyError, layout: null },
 ];
 
 const privateRoutes = [];

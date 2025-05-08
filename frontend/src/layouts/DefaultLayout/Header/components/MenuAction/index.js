@@ -10,10 +10,13 @@ import {
 import NavigationMenuMobile from "../NavigationMenuMobile";
 import Tippy from "@tippyjs/react";
 import SeachBar from "../../../../../components/SearchBar";
+import { useAuth } from "../../../../../context/AuthContext";
 
 // const defaultLayout = document.querySelector("#default-layout");
 
 function ActionMenu() {
+  const { user } = useAuth();
+
   //responsive handle toggle menu bar
   const [isMenuBarOpen, setIsMenuBarOpen] = useState(false);
   const [animate, setAnimate] = useState(false);
@@ -78,9 +81,12 @@ function ActionMenu() {
       <SeachBar />
 
       {/* action part */}
-      <Link to="/account" className="block ct-lg:hidden">
+      <Link
+        to={user ? "/member/my-profile" : "/auth/login"}
+        className="block ct-lg:hidden"
+      >
         <div className="action-nav_account ct-icon">
-          <UserIcon />
+          <UserIcon size={24} />
         </div>
       </Link>
 
