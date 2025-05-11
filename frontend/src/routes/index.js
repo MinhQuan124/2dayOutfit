@@ -5,6 +5,7 @@ import SpecialOffers from "../pages/SpecialOffers";
 import Sales from "../pages/Sales";
 import SearchPage from "../pages/SearchPage";
 import Account from "../pages/Account";
+import MyProfile from "../pages/MyProfile";
 import Cart from "../pages/Cart";
 import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
@@ -27,6 +28,7 @@ const publicRoutes = [
   { path: "/sales", component: Sales },
   { path: "/search", component: SearchPage },
   { path: "/account", component: Account },
+  { path: "/member/my-profile", component: MyProfile },
   { path: "/cart", component: Cart },
   { path: "/auth/login", component: Login, layout: null },
   { path: "/auth/register", component: Register, layout: null },

@@ -1,11 +1,11 @@
 function ProductItem({ src, name, price }) {
   return (
     <div className="flex flex-col group hover:cursor-pointer">
-      <div className="bg-white overflow-hidden">
+      <div className="bg-white rounded-md overflow-hidden">
         <img
           src={src}
           alt={name}
-          className="w-full h-96 object-cover transition-transform duration-300 group-hover:scale-105"
+          className="w-full h-96 rounded-md object-cover transition-transform duration-300 group-hover:scale-105"
         />
       </div>
       <div className="mt-2 py-4">

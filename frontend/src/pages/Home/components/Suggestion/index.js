@@ -39,7 +39,7 @@ function Suggestion() {
   return (
     <FadeInEffect>
       <div className="my-24 px-0">
-        <h1 className="text-2xl font-extrabold uppercase text-center 2xl:text-left">
+        <h1 className="text-2xl font-extrabold uppercase text-center">
           Suggestions for you
         </h1>
         <div className="my-6 flex justify-center gap-[14px] flex-wrap">

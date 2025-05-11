@@ -9,9 +9,84 @@ import {
   XMarkIcon,
 } from "../../../../../components/Icons";
 import { useAuth } from "../../../../../context/AuthContext";
+import { useState } from "react";
+import SubMenu from "../../../../../components/SubMenu";
 
-function NavigationMenuMobile({ toggleMenu, animate }) {
-  const { user } = useAuth();
+const SUB_MENU_ACCOUNT_ITEMS = [
+  {
+    label: "My Profile",
+    link: "/member/my-profile",
+  },
+  {
+    label: "Orders",
+    link: "/orders",
+  },
+  {
+    label: "Favorites",
+    link: "/favorites",
+  },
+  {
+    label: "Account Settings",
+    link: "/settings",
+  },
+];
+
+const SUB_MENU_MENS_ITEMS = [
+  {
+    label: "All Clothing",
+    link: "/products/all-clothing",
+  },
+  {
+    label: "Shirts",
+    link: "/products/category/shirt",
+  },
+  {
+    label: "Jackets",
+    link: "/products/category/jacket",
+  },
+  {
+    label: "Suits",
+    link: "/products/category/suit",
+  },
+  {
+    label: "Pants",
+    link: "/products/category/pants",
+  },
+  {
+    label: "Shorts",
+    link: "/products/category/shorts",
+  },
+  {
+    label: "Hoodies",
+    link: "/products/category/hoodie",
+  },
+  {
+    label: "Footwears",
+    link: "/products/category/footwear",
+  },
+  {
+    label: "Accessories",
+    link: "/products/category/accessories",
+  },
+];
+
+function SliderNavbar({ toggleMenu, animate }) {
+  const { user, logout } = useAuth();
+  const [subMenu, setSubMenu] = useState(null);
+
+  const SUB_MENU_ACCOUNT_ITEMS_WITH_LOGOUT = [
+    ...SUB_MENU_ACCOUNT_ITEMS,
+    {
+      label: "Log Out",
+      onClick: logout,
+    },
+  ];
+
+  const handleOpenSubMenu = (title, items) => {
+    setSubMenu({ title, items });
+  };
+
+  const handleCloseSubMenu = () => setSubMenu(null);
 
   return (
     <div
@@ -21,7 +96,7 @@ function NavigationMenuMobile({ toggleMenu, animate }) {
     >
       <div className="flex flex-col right-0 w-80 h-screen bg-white translate-x-0 overflow-y-scroll scroll-smooth">
         {/* Close button */}
-        <div className="flex justify-end py-2 pl-6 pr-4">
+        <div className="flex justify-end py-3 pl-6 pr-4">
           <button
             className="p-2 rounded-full hover:bg-slate-200"
             onClick={toggleMenu}
@@ -31,8 +106,16 @@ function NavigationMenuMobile({ toggleMenu, animate }) {
         </div>
 
         {user ? (
-          <button className="ct-navigation-menu-item-mobile">
-            <UserIcon size={36} />
+          <button
+            onClick={() =>
+              handleOpenSubMenu(
+                "My Account",
+                SUB_MENU_ACCOUNT_ITEMS_WITH_LOGOUT
+              )
+            }
+            className="ct-navigation-menu-item-mobile"
+          >
+            <UserIcon size={36} strokeWidth={2} />
             <span className="text-lg">Hi, {user.name}</span>
             <ChevronRightIcon />
           </button>
@@ -42,8 +125,11 @@ function NavigationMenuMobile({ toggleMenu, animate }) {
 
         {/* Navigation menu */}
         <div className="py-6">
-          <button className="ct-navigation-menu-item-mobile">
-            <Link to="/mens">Mens</Link>
+          <button
+            onClick={() => handleOpenSubMenu("Mens", SUB_MENU_MENS_ITEMS)}
+            className="ct-navigation-menu-item-mobile"
+          >
+            <span>Mens</span>
             <ChevronRightIcon />
           </button>
 
@@ -103,8 +189,28 @@ function NavigationMenuMobile({ toggleMenu, animate }) {
           </Link>
         </div>
       </div>
+
+      {/* Sub menu */}
+      {subMenu && (
+        <SubMenu
+          title={subMenu.title}
+          items={subMenu.items}
+          onBack={handleCloseSubMenu}
+          onClose={toggleMenu}
+        />
+      )}
+
+      {/* Submenu account */}
+      {user && subMenu && (
+        <SubMenu
+          title={subMenu.title}
+          items={subMenu.items}
+          onBack={handleCloseSubMenu}
+          onClose={toggleMenu}
+        />
+      )}
     </div>
   );
 }
 
-export default NavigationMenuMobile;
+export default SliderNavbar;

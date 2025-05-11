@@ -7,15 +7,28 @@ import {
   MenuIcon,
   UserIcon,
 } from "../../../../../components/Icons";
-import NavigationMenuMobile from "../NavigationMenuMobile";
 import Tippy from "@tippyjs/react";
 import SeachBar from "../../../../../components/SearchBar";
+import SliderNavbar from "../SliderNavbar";
 import { useAuth } from "../../../../../context/AuthContext";
+import { useCartContext } from "../../../../../context/CartContext";
 
 // const defaultLayout = document.querySelector("#default-layout");
 
 function ActionMenu() {
   const { user } = useAuth();
+
+  const { cart } = useCartContext();
+
+  const [totalQuantity, setTotalQuantity] = useState(0);
+
+  useEffect(() => {
+    const totalQuantity = cart.items.reduce(
+      (sum, item) => sum + item.quantity,
+      0
+    );
+    setTotalQuantity(totalQuantity);
+  }, [cart]);
 
   //responsive handle toggle menu bar
   const [isMenuBarOpen, setIsMenuBarOpen] = useState(false);
@@ -86,7 +99,7 @@ function ActionMenu() {
         className="block ct-lg:hidden"
       >
         <div className="action-nav_account ct-icon">
-          <UserIcon size={24} />
+          <UserIcon size={24} strokeWidth={1.5} />
         </div>
       </Link>
 
@@ -101,14 +114,19 @@ function ActionMenu() {
       >
         <Link to="/account" className="block">
           <div className="action-nav_account ct-icon">
-            <FavouriteIcon />
+            <FavouriteIcon size={"size-6"} />
           </div>
         </Link>
       </Tippy>
 
       <Link to="/cart" className="block">
-        <div className="action-nav_cart ct-icon">
+        <div className="relative action-nav_cart ct-icon">
           <CartIcon />
+          {totalQuantity > 0 && (
+            <div className="absolute text-[10px] pt-1 font-semibold">
+              {totalQuantity >= 10 ? "9+" : totalQuantity}
+            </div>
+          )}
         </div>
       </Link>
 
@@ -127,7 +145,7 @@ function ActionMenu() {
             className="bottom-0 block left-0 fixed right-0 top-0 max-h-screen bg-coverLayout z-10 "
             onClick={toggleMenuBar}
           ></div>
-          <NavigationMenuMobile toggleMenu={toggleMenuBar} animate={animate} />
+          <SliderNavbar toggleMenu={toggleMenuBar} animate={animate} />
         </div>
       )}
     </div>

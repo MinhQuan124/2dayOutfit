@@ -1,7 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
 
+import Toast from "../../../components/Toast";
+import { toast } from "../../../components/Toast";
 import { EyeIcon, EyeSlashIcon } from "../../../components/Icons";
 import { registerUser } from "../../../services/apis/userService";
 
@@ -69,17 +70,7 @@ function Register() {
 
   return (
     <div className="w-full max-w-lg h-auto px-9 mx-auto mt-5">
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+      <Toast />
       {/* Sign in part */}
       <div>
         <div className="mb-5">

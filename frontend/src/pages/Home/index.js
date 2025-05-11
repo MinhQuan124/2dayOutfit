@@ -6,7 +6,7 @@ import VideoBanner from "./components/VideoBanner";
 
 function Home() {
   return (
-    <div className="homePage bg-[#f7f6f3]">
+    <div className="homePage">
       {/* Video banner section */}
       <VideoBanner />
 
@@ -33,7 +33,7 @@ function Home() {
       </div>
 
       {/* Newsletter section */}
-      <div className="max-w-screen-2xl mt-5 bg-white">
+      <div className="max-w-screen-2xl mt-5 border-t-[1px] border-gray-200">
         <Newsletter />
       </div>
     </div>

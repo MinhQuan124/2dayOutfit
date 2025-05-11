@@ -45,7 +45,7 @@ function DiscoverBrands() {
           ))}
         </div>
 
-        <div className="flex justify-center align-middle w-full">
+        <div className="flex justify-center items-center w-full my-5">
           <Link className="flex max-w-[50%] my-5 text-2xl text-center font-extrabold">
             <p className="pr-1">View More </p>
             <svg

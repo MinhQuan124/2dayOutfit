@@ -1,15 +1,13 @@
 import { useState } from "react";
 
-function CustomDropdown({ label, options = [], onClick = () => {} }) {
+function CustomDropdown({ label, options = [], onClick = () => {}, value }) {
   const [openDropdown, setOpenDropdown] = useState(false);
-  const [selected, setSelected] = useState(null);
 
   const toggleDropdown = () => {
     setOpenDropdown((prev) => !prev);
   };
 
   const handleSelected = (option) => {
-    setSelected(option);
     onClick(option);
     setOpenDropdown(false);
   };
@@ -20,7 +18,7 @@ function CustomDropdown({ label, options = [], onClick = () => {} }) {
         onClick={() => toggleDropdown()}
         className="flex w-full items-center justify-between gap-2 px-4 py-2 border border-gray-300 rounded-full text-base font-semibold text-gray-800 cursor-pointer whitespace-nowrap"
       >
-        {selected ? selected : label}
+        {value ? value : label}
         <svg
           className={`w-4 h-4 transition-transform ${
             openDropdown ? "rotate-180" : ""

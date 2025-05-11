@@ -63,7 +63,7 @@ export const SearchIcon = () => (
   </svg>
 );
 
-export const UserIcon = ({ size }) => (
+export const UserIcon = ({ size, strokeWidth }) => (
   <svg
     aria-hidden="true"
     className="profile-image-class"
@@ -76,20 +76,20 @@ export const UserIcon = ({ size }) => (
   >
     <path
       stroke="currentColor"
-      strokeWidth="2"
+      strokeWidth={strokeWidth}
       d="M3.75 21v-3a3.75 3.75 0 013.75-3.75h9A3.75 3.75 0 0120.25 18v3m-4.5-13.5a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
     ></path>
   </svg>
 );
 
-export const FavouriteIcon = () => (
+export const FavouriteIcon = ({ size }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
     strokeWidth="1.5"
     stroke="currentColor"
-    className="size-6"
+    className={size}
   >
     <path
       strokeLinecap="round"
@@ -117,6 +117,54 @@ export const CartIcon = () => (
   </svg>
 );
 
+export const TrashIcon = () => (
+  <svg
+    aria-hidden="true"
+    focusable="false"
+    viewBox="0 0 24 24"
+    role="img"
+    width="24px"
+    height="24px"
+    fill="none"
+  >
+    <path
+      stroke="currentColor"
+      strokeMiterlimit="10"
+      strokeWidth="1.5"
+      d="M13.75 10v7m-3.5-7v7m-3.5-8.5V17c0 1.24 1.01 2.25 2.25 2.25h6c1.24 0 2.25-1.01 2.25-2.25V7.75h2.25m-10-3h3.75c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5H4.5"
+    ></path>
+  </svg>
+);
+
+export const PlusIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    stroke="currentColor"
+    className="size-6"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M12 4.5v15m7.5-7.5h-15"
+    />
+  </svg>
+);
+
+export const MinusIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    stroke="currentColor"
+    className="size-6"
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14" />
+  </svg>
+);
 export const MenuIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"

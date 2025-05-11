@@ -6,17 +6,31 @@ import {
   getProductDetail,
   getProductsByCategory,
 } from "../../services/apis/productService";
+import Toast from "../../components/Toast";
+import { toast } from "../../components/Toast";
 import CustomDropdown from "../../components/CustomDropdown";
 import { FavouriteIcon } from "../../components/Icons";
 import ScrollToTopButton from "../../components/ScrollToTopButton";
 import RelatedProducts from "./components/RelatedProducts";
 import ReviewsSection from "./components/ReviewsSection";
+import { useAuth } from "../../context/AuthContext";
+import { addCartItem } from "../../services/apis/cartService";
+import { useCartContext } from "../../context/CartContext";
 
 function ProductDetail() {
   //Get params slug
   const { slug } = useParams();
+
+  const { user } = useAuth();
+  const userId = user.id;
+
+  const { cart, fetchCart, setCart } = useCartContext();
+
   const [product, setProduct] = useState(null);
   const [selectedVariation, setSelectedVariation] = useState(null);
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [selectedColor, setSelectedColor] = useState(null);
+
   const [relatedProducts, setRelatedProducts] = useState([]);
 
   //Read more/ Show less description
@@ -45,9 +59,63 @@ function ProductDetail() {
 
   if (!product) return <div className="p-8 text-center">...</div>;
 
+  const handleAddToCart = async () => {
+    //Check if user login
+    if (!userId) {
+      window.location.href = "/auth/login";
+      return;
+    }
+
+    if (!selectedColor || !selectedSize)
+      return toast.warning("Please choose size and color");
+
+    try {
+      const existingItem = (cart?.items || []).find(
+        (item) =>
+          item.productId._id === product._id &&
+          item.color === selectedColor &&
+          item.size === selectedSize
+      );
+
+      if (existingItem) {
+        if (existingItem.quantity >= 10) {
+          return toast.error(
+            "Sorry, you have reached the quantity limit (10). Please remove an item and try again."
+          );
+        }
+
+        await addCartItem(
+          userId,
+          product._id,
+          product.price,
+          selectedSize,
+          selectedColor,
+          selectedVariation?.image,
+          existingItem ? existingItem.quantity + 1 : 1
+        );
+      } else {
+        await addCartItem(
+          userId,
+          product._id,
+          product.price,
+          selectedSize,
+          selectedColor,
+          selectedVariation?.image
+        );
+      }
+
+      toast.success("Added to Cart");
+      fetchCart(userId, setCart);
+    } catch (error) {
+      console.error("Add product to cart failed", error);
+      toast.error("Something went wrong. Please try again");
+    }
+  };
+
   return (
-    <div className="my-5 px-4 md:p-8 flex flex-col gap-14">
-      <div className="flex flex-col md:flex-row gap-14">
+    <div className="p-4 pt-0 lg:p-8 lg:pt-0 flex flex-col gap-14">
+      <Toast />
+      <div className="flex flex-col lg:flex-row gap-14">
         {/* Image and info section */}
         {/* Image section */}
         <div className="flex flex-row-reverse md:flex-row gap-4 w-full md:w-auto">
@@ -58,7 +126,7 @@ function ProductDetail() {
                 key={variation.image}
                 src={variation.image}
                 alt={variation.color}
-                className={`w-16 h-16 lg:w-24 lg:h-24 object-cover rounded cursor-pointer border-2 ${
+                className={`w-16 h-16 md:w-24 md:h-24 object-cover rounded cursor-pointer border-2 ${
                   selectedVariation === variation
                     ? "border-black"
                     : "border-transparent"
@@ -72,7 +140,7 @@ function ProductDetail() {
 
           {/* main img */}
           <div className="flex-1">
-            <div className="h-[350px] lg:w-[450px] lg:h-[550px]">
+            <div className="h-[350px] sm:h-[600px] lg:w-[450px] lg:h-[550px]">
               <img
                 src={selectedVariation?.image}
                 alt="Product"
@@ -109,7 +177,10 @@ function ProductDetail() {
                     (v) => v.color === color
                   );
                   setSelectedVariation(variation);
+                  setSelectedColor(color);
+                  setSelectedSize(null);
                 }}
+                value={selectedColor}
               />
             </>
 
@@ -129,21 +200,26 @@ function ProductDetail() {
                 options={[
                   ...new Set(selectedVariation?.sizes.map((s) => s.size) || []),
                 ]}
+                onClick={(size) => setSelectedSize(size)}
+                value={selectedSize}
               />
             </div>
           </div>
 
           {/* Order section */}
           <div className="flex flex-col w-full items-center mx-auto">
-            <div className="py-2">
-              <button className="w-96 border text-lg text-white p-1.5 rounded-full font-semibold bg-[#007A7A] hover:bg-slate-600 transition-all duration-300">
-                Add to Bag
+            <div className="py-2 w-full flex justify-center">
+              <button
+                onClick={handleAddToCart}
+                className="w-96 border text-lg text-white p-1.5 rounded-full font-semibold bg-[#007A7A] hover:bg-[#8b9292] transition-all duration-300"
+              >
+                Add to Cart
               </button>
             </div>
-            <div className="py-2">
+            <div className="py-2 w-full flex justify-center">
               <button className="w-96 border text-lg p-1.5 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300">
                 <span className="flex items-center justify-center gap-1">
-                  <FavouriteIcon />
+                  <FavouriteIcon size={"size-6"} />
                   Favourite
                 </span>
               </button>
