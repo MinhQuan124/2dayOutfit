@@ -7,6 +7,9 @@ import SearchPage from "../pages/SearchPage";
 import Account from "../pages/Account";
 import MyProfile from "../pages/MyProfile";
 import Cart from "../pages/Cart";
+import CheckoutPage from "../pages/CheckoutPage";
+import Order from "../pages/Order";
+
 import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
 
@@ -30,6 +33,8 @@ const publicRoutes = [
   { path: "/account", component: Account },
   { path: "/member/my-profile", component: MyProfile },
   { path: "/cart", component: Cart },
+  { path: "/checkout", component: CheckoutPage },
+  { path: "/orders", component: Order },
   { path: "/auth/login", component: Login, layout: null },
   { path: "/auth/register", component: Register, layout: null },
   {

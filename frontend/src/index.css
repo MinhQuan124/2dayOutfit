@@ -40,3 +40,8 @@
 .ct-footer-links {
   @apply p-1 pl-0 max-sm:mb-2 mb-4 cursor-pointer hover:text-gray-200;
 }
+
+/* Input */
+.ct-input {
+  @apply w-full block border-2 rounded-md text-base pl-4 pr-8 py-4 mt-6 appearance-none hover:border-black focus:outline-none focus:ring-0 focus:border-black;
+}

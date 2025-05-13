@@ -87,7 +87,7 @@ function Cart() {
         <div className="flex flex-col lg:flex-row lg:w-[80%] mx-auto gap-8">
           {/* Products part */}
           <div className="flex-1 lg:basis-2/3 lg:w-[1100px]">
-            <h3 className="font-semibold">Cart</h3>
+            <h3 className="font-semibold text-center lg:text-left">Cart</h3>
             {!cart || cart.items.length === 0 ? (
               <p>There are no items in your cart</p>
             ) : cart?.items ? (
@@ -99,7 +99,7 @@ function Cart() {
                   <div className="flex flex-row">
                     {/* product image */}
                     <Link to={`/products/${item.productId.slug}`}>
-                      <div className="w-60 aspect-square rounded-md overflow-hidden">
+                      <div className="w-36 h-36 lg:w-48 lg:h-48 rounded-md overflow-hidden">
                         <img
                           src={item.image}
                           alt={item.productId.name}
@@ -108,7 +108,7 @@ function Cart() {
                       </div>
                     </Link>
 
-                    <div className="w-full flex justify-between mx-4 gap-10">
+                    <div className="w-full flex justify-between ml-2 sm:mx-4 gap-2 sm:gap-10">
                       {/* product info */}
                       <div className="">
                         <Link to={`/products/${item.productId.slug}`}>
@@ -202,9 +202,19 @@ function Cart() {
             {/* devider */}
             <div className="w-full border border-[#e5e5e5] my-3"></div>
 
-            <button className="w-full bg-black text-white text-lg rounded-full hover:bg-gray-800 py-3 mt-5">
-              Member Checkout
-            </button>
+            <Link to="/checkout" className="block">
+              <button className="hidden lg:block w-full bg-black text-white text-lg rounded-full hover:bg-gray-800 py-3 mt-5">
+                Member Checkout
+              </button>
+            </Link>
+
+            <div className="fixed bottom-0 left-0 w-full bg-white border-t border-[#beb7b7] p-4 shadow-md lg:hidden z-50">
+              <Link to="/checkout" className="block">
+                <button className="w-full bg-black text-white text-lg rounded-full hover:bg-gray-800 py-3">
+                  Member Checkout
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

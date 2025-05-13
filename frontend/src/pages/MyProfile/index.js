@@ -33,7 +33,7 @@ function MyProfile() {
       </div>
 
       {/* Button */}
-      <button className="hidden mt-6 px-6 py-2 border rounded-full text-black flex items-center gap-2 hover:bg-gray-100 transition">
+      <button className="hidden mt-6 px-6 py-2 border rounded-full text-black items-center gap-2 hover:bg-gray-100 transition">
         View Member Pass
       </button>
     </div>
