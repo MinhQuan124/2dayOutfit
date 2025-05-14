@@ -21,7 +21,6 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
 
   const renderPage = () => {
     const pageNumbers = [];
-    const maxPage = 5; // Render max page = 5
 
     //Luon giu page hien thi 5
     let startPage = Math.max(1, currentPage - 2);
