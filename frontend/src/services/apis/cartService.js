@@ -55,7 +55,7 @@ const markOrderedItem = async (userId, cartData) => {
 };
 
 const deleteCartItem = async (userId, productId, color, size, image) => {
-  const res = await axiosClient.delete(`/cart/${userId}/item`, {
+  const res = await axiosClient.post(`/cart/${userId}/item`, {
     productId,
     color,
     size,

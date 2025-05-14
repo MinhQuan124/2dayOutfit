@@ -12,7 +12,6 @@ import CustomDropdown from "../../components/CustomDropdown";
 import { FavouriteIcon } from "../../components/Icons";
 import ScrollToTopButton from "../../components/ScrollToTopButton";
 import RelatedProducts from "./components/RelatedProducts";
-import ReviewsSection from "./components/ReviewsSection";
 import { useAuth } from "../../context/AuthContext";
 import { addCartItem } from "../../services/apis/cartService";
 import { useCartContext } from "../../context/CartContext";
@@ -257,7 +256,6 @@ function ProductDetail() {
       </div>
 
       {/* Reviews Section */}
-      <ReviewsSection />
 
       <ScrollToTopButton />
     </div>

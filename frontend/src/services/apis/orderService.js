@@ -20,4 +20,13 @@ const getOrder = async (userId) => {
   }
 };
 
-export { createOrder, getOrder };
+const cancelOrder = async (orderId) => {
+  try {
+    const res = await axiosClient.put(`/order/cancel/${orderId}`);
+    return res.data;
+  } catch (error) {
+    console.error("Cancel order error", error);
+  }
+};
+
+export { createOrder, getOrder, cancelOrder };
