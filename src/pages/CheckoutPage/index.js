@@ -17,6 +17,8 @@ function CheckoutPage() {
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
 
+  const [isPlacingOrder, setIsPlacingOrder] = useState(false);
+
   const navigate = useNavigate();
 
   const handleOnChangeFullname = (e) => {
@@ -66,6 +68,8 @@ function CheckoutPage() {
   }
 
   const handlePlaceOrder = async () => {
+    if (isPlacingOrder) return;
+
     //Check if user login
     if (!userId) {
       window.location.href = "/auth/login";
@@ -125,6 +129,8 @@ function CheckoutPage() {
     };
 
     try {
+      setIsPlacingOrder(true);
+
       await createOrder(orderData);
       toast.success("Place Order Successful");
 
