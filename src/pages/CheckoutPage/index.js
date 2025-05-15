@@ -131,9 +131,7 @@ function CheckoutPage() {
       await markOrderedItem(userId, cartData);
 
       fetchCart(userId, setCart);
-      setTimeout(() => {
-        navigate("/orders");
-      }, 2000);
+      navigate("/orders");
     } catch (error) {
       toast.error("Place Order Failed");
       console.error("Order failed", error);

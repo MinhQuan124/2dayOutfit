@@ -21,7 +21,7 @@ function ProductDetail() {
   const { slug } = useParams();
 
   const { user } = useAuth();
-  const userId = user.id;
+  const userId = user?.id;
 
   const { cart, fetchCart, setCart } = useCartContext();
 

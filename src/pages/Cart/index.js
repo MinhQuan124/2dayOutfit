@@ -203,14 +203,27 @@ function Cart() {
             <div className="w-full border border-[#e5e5e5] my-3"></div>
 
             <Link to="/checkout" className="block">
-              <button className="hidden lg:block w-full bg-black text-white text-lg rounded-full hover:bg-gray-800 py-3 mt-5">
+              <button
+                disabled={cart.items.length === 0}
+                className={`hidden lg:block w-full bg-black text-white text-lg rounded-full py-3 mt-5 ${
+                  cart.items.length === 0 ? "opacity-30" : "hover:bg-gray-800 "
+                }`}
+              >
                 Member Checkout
               </button>
             </Link>
 
-            <div className="fixed bottom-0 left-0 w-full bg-white border-t border-[#beb7b7] p-4 shadow-md lg:hidden z-50">
+            <div
+              disabled={cart.items.length === 0}
+              className="fixed bottom-0 left-0 w-full bg-white border-t border-[#beb7b7] p-4 shadow-md lg:hidden z-50"
+            >
               <Link to="/checkout" className="block">
-                <button className="w-full bg-black text-white text-lg rounded-full hover:bg-gray-800 py-3">
+                <button
+                  disabled={cart.items.length === 0}
+                  className={`w-full bg-black text-white text-lg rounded-full py-3 ${
+                    cart.items.length === 0 ? "opacity-30" : "hover:bg-gray-800"
+                  }`}
+                >
                   Member Checkout
                 </button>
               </Link>
