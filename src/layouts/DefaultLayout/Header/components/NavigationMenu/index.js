@@ -76,7 +76,7 @@ function NavigationMenu() {
       </li>
 
       <li className="ct-navigation-menu-item">
-        <Link className="block p-1 py-0" to="/special-offer">
+        <Link className="block p-1 py-0" to="/special-offers">
           Special Offers
         </Link>
       </li>

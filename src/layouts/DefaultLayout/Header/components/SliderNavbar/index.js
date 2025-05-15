@@ -138,7 +138,7 @@ function SliderNavbar({ toggleMenu, animate }) {
           </button>
 
           <button className="ct-navigation-menu-item-mobile">
-            <Link to="/special-offer">Special Offers</Link>
+            <Link to="/special-offers">Special Offers</Link>
           </button>
 
           <button className="ct-navigation-menu-item-mobile">
