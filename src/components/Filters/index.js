@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { XMarkIcon } from "../Icons";
 
 function Filters({ data, onFilterChange, onSortChange }) {
   const [filters, setFilters] = useState([]);
@@ -62,6 +63,21 @@ function Filters({ data, onFilterChange, onSortChange }) {
     onFilterChange(updated);
   };
 
+  const isFilterActive = Object.values(selectedFilters).some(
+    (filterArray) => filterArray.length > 0
+  );
+
+  const handleClearFilters = () => {
+    const clearedFilters = {
+      Category: [],
+      Size: [],
+      Brand: [],
+      Color: [],
+    };
+    setSelectedFilters(clearedFilters);
+    onFilterChange(clearedFilters);
+  };
+
   return (
     <div className="flex flex-col fixed px-4 md:px-12 bg-white w-full min-h-fit z-30">
       <div className="pt-5">
@@ -83,10 +99,18 @@ function Filters({ data, onFilterChange, onSortChange }) {
         </select>
       </div>
 
-      <div className="pb-5 mt-2">
-        <label className="text-sm font-semibold text-gray-600 mb-2 block">
-          Filter
-        </label>
+      <div className="pb-5 mt-2 w-fit">
+        <div className="flex justify-between text-sm font-semibold text-gray-600 mb-2">
+          <span>Filter</span>
+          {isFilterActive && (
+            <button
+              onClick={handleClearFilters}
+              className="flex items-center gap-1 text-red-500 hover:text-red-700"
+            >
+              <XMarkIcon className="w-4 h-4" /> Clear Filters
+            </button>
+          )}
+        </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-fit bg-white overflow-visible p-2 pl-0">
           {filters.map((filter, index) => (
             <div key={index} className="relative w-full min-w-[140px]">
