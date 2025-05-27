@@ -6,6 +6,7 @@ import { DefaultLayout } from "./layouts";
 import ScrollToTop from "./components/ScrollToTop";
 import { AuthProvider } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
+import SpinnerLoading from "./components/SpinnerLoading";
 function App() {
   return (
     <AuthProvider>
@@ -14,7 +15,11 @@ function App() {
           <ScrollToTop />
           <div className="App">
             <Suspense
-              fallback={<p className="text-center mt-10">Loading...</p>}
+              fallback={
+                <div className="flex justify-center mt-10">
+                  <SpinnerLoading />
+                </div>
+              }
             >
               <Routes>
                 {publicRoutes.map((route, index) => {
