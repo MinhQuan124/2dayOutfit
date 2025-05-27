@@ -1,24 +1,23 @@
-import Home from "../pages/Home";
-import Mens from "../pages/Mens";
-import OurStory from "../pages/OurStory";
-import SpecialOffers from "../pages/SpecialOffers";
-import Sales from "../pages/Sales";
-import SearchPage from "../pages/SearchPage";
-import Account from "../pages/Account";
-import MyProfile from "../pages/MyProfile";
-import Cart from "../pages/Cart";
-import CheckoutPage from "../pages/CheckoutPage";
-import Order from "../pages/Order";
+import { lazy } from "react";
 
-import Login from "../pages/Auth/Login";
-import Register from "../pages/Auth/Register";
-
-import VerifyEmail from "../pages/VerifyEmail";
-import VerifyEmailNotice from "../pages/VerifyEmailNotice";
-import VerifySuccess from "../pages/VerifySuccess";
-import VerifyError from "../pages/VerifyError";
-
-import ProductDetail from "../pages/ProductDetail";
+const Home = lazy(() => import("../pages/Home"));
+const Mens = lazy(() => import("../pages/Mens"));
+const OurStory = lazy(() => import("../pages/OurStory"));
+const SpecialOffers = lazy(() => import("../pages/SpecialOffers"));
+const Sales = lazy(() => import("../pages/Sales"));
+const SearchPage = lazy(() => import("../pages/SearchPage"));
+const Account = lazy(() => import("../pages/Account"));
+const MyProfile = lazy(() => import("../pages/MyProfile"));
+const Cart = lazy(() => import("../pages/Cart"));
+const CheckoutPage = lazy(() => import("../pages/CheckoutPage"));
+const Order = lazy(() => import("../pages/Order"));
+const Login = lazy(() => import("../pages/Auth/Login"));
+const Register = lazy(() => import("../pages/Auth/Register"));
+const VerifyEmail = lazy(() => import("../pages/VerifyEmail"));
+const VerifyEmailNotice = lazy(() => import("../pages/VerifyEmailNotice"));
+const VerifySuccess = lazy(() => import("../pages/VerifySuccess"));
+const VerifyError = lazy(() => import("../pages/VerifyError"));
+const ProductDetail = lazy(() => import("../pages/ProductDetail"));
 
 //Public routes
 const publicRoutes = [
